@@ -1174,8 +1174,12 @@ function MainWebsite({ onEnterAdmin }: { onEnterAdmin: () => void }) {
           </motion.div>
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10 mt-16 pt-8 border-t border-zinc-900 text-xs text-zinc-600">
-          © {new Date().getFullYear()} Avdar. {t.footerSection?.allRightsReserved || "All rights reserved."}
+                <div className="max-w-7xl mx-auto relative z-10 mt-16 pt-8 border-t border-zinc-900 text-xs text-zinc-600 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <span>© {new Date().getFullYear()} Avdar. {t.footerSection?.allRightsReserved || "All rights reserved."}</span>
+          <div className="flex gap-4 uppercase tracking-widest">
+            <a href="/impressum" className="hover:text-gold-400 transition-colors">Impressum</a>
+            <a href="/privacy" className="hover:text-gold-400 transition-colors">Privacy</a>
+          </div>
         </div>
       </footer>
     </>

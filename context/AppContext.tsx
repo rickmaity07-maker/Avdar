@@ -2,7 +2,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { auth, db, getGoogleProvider, getFacebookProvider } from '../lib/firebase';
 import { signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, sendPasswordResetEmail, verifyBeforeUpdateEmail, EmailAuthProvider, reauthenticateWithCredential, updatePassword } from 'firebase/auth';
-import { doc, setDoc, collection, onSnapshot, addDoc, updateDoc, deleteDoc, getDoc, DocumentReference } from 'firebase/firestore';
+import { doc, setDoc, collection, onSnapshot, addDoc, updateDoc, deleteDoc, getDoc, DocumentReference, query, where } from 'firebase/firestore';
 
 type Language = string;
 type Page = 'home' | 'services' | 'gallery' | 'products' | 'contact' | 'booking' | 'admin' | 'auth' | 'profile';
@@ -293,14 +293,14 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     }
   }, [currentUser, page, setPageRouter]);
 
+  // Auth state + own profile only. Appointments/alerts moved to their own
+  // effect below, scoped by role, so a regular customer never subscribes to
+  // the full collection (see firestore.rules — read is owner-or-admin only).
   useEffect(() => {
     let unsubUser: (() => void) | null = null;
-    let unsubAppts: (() => void) | null = null;
-    let unsubAlerts: (() => void) | null = null;
 
     const unsubAuth = onAuthStateChanged(auth, async (user) => {
       if (user) {
-        // 🚨 ADDED ERROR CATCHER
         unsubUser = onSnapshot(doc(db, 'users', user.uid), (docSnap) => {
           if (docSnap.exists()) {
             const profile = docSnap.data() as UserProfile;
@@ -313,28 +313,13 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
             setIsAdminAuth(false);
           }
         }, (error) => console.error("🚨 CRASH ON COLLECTION 'users' (Individual Doc):", error.message));
-
-        // 🚨 ADDED ERROR CATCHER
-        unsubAppts = onSnapshot(collection(db, 'appointments'), (snap) => {
-          setAppointments(snap.docs.map(d => ({ id: d.id, ...d.data() } as Appointment)));
-        }, (error) => console.error("🚨 CRASH ON COLLECTION 'appointments':", error.message));
-
-        // 🚨 ADDED ERROR CATCHER
-        unsubAlerts = onSnapshot(collection(db, 'alerts'), (snap) => {
-          setAlerts(snap.docs.map(d => ({ id: d.id, ...d.data() } as Alert)));
-        }, (error) => console.error("🚨 CRASH ON COLLECTION 'alerts':", error.message));
       } else {
         setCurrentUser(null);
         setIsAdminAuth(false);
-        setAppointments([]);
-        setAlerts([]);
         if (unsubUser) { unsubUser(); unsubUser = null; }
-        if (unsubAppts) { unsubAppts(); unsubAppts = null; }
-        if (unsubAlerts) { unsubAlerts(); unsubAlerts = null; }
       }
     });
 
-    // 🚨 ADDED ERROR CATCHERS TO ALL GLOBAL LISTENERS
     const unsubTrans = onSnapshot(doc(db, 'settings', 'translations'), (snap) => {
       if (snap.exists()) setTranslations({ ...fallbackTranslations, ...(snap.data() as TranslationData) });
     }, (error) => console.error("🚨 CRASH ON 'settings/translations':", error.message));
@@ -357,11 +342,42 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
     return () => { 
       unsubAuth(); unsubTrans(); unsubSrv(); unsubProd(); unsubStylists(); unsubSettings();
-      if (unsubAppts) unsubAppts(); 
-      if (unsubAlerts) unsubAlerts(); 
       if (unsubUser) unsubUser(); 
     };
   }, []);
+
+  // Appointments & alerts, scoped by role: admins see everything (needed for
+  // the dashboard), regular customers only ever query their OWN records —
+  // matching the owner-or-admin read rule in firestore.rules. Re-subscribes
+  // whenever the logged-in user or their admin status changes.
+  useEffect(() => {
+    let unsubAppts: (() => void) | null = null;
+    let unsubAlerts: (() => void) | null = null;
+
+    if (currentUser) {
+      const apptsRef = isAdminAuth
+        ? collection(db, 'appointments')
+        : query(collection(db, 'appointments'), where('userId', '==', currentUser.id));
+      unsubAppts = onSnapshot(apptsRef, (snap) => {
+        setAppointments(snap.docs.map(d => ({ id: d.id, ...d.data() } as Appointment)));
+      }, (error) => console.error("🚨 CRASH ON COLLECTION 'appointments':", error.message));
+
+      const alertsRef = isAdminAuth
+        ? collection(db, 'alerts')
+        : query(collection(db, 'alerts'), where('userId', '==', currentUser.id));
+      unsubAlerts = onSnapshot(alertsRef, (snap) => {
+        setAlerts(snap.docs.map(d => ({ id: d.id, ...d.data() } as Alert)));
+      }, (error) => console.error("🚨 CRASH ON COLLECTION 'alerts':", error.message));
+    } else {
+      setAppointments([]);
+      setAlerts([]);
+    }
+
+    return () => {
+      if (unsubAppts) unsubAppts();
+      if (unsubAlerts) unsubAlerts();
+    };
+  }, [currentUser, isAdminAuth]);
 
   useEffect(() => {
     let unsubUsersDB: (() => void) | null = null;
@@ -369,17 +385,14 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     let unsubClientNotes: (() => void) | null = null;
 
     if (isAdminAuth) {
-      // 🚨 ADDED ERROR CATCHER
       unsubUsersDB = onSnapshot(collection(db, 'users'), (snap) => {
         setUsersDB(snap.docs.map(d => ({ ...d.data() } as UserProfile)));
       }, (error) => console.error("🚨 CRASH ON COLLECTION 'users' (Admin List):", error.message));
       
-      // 🚨 ADDED ERROR CATCHER
       unsubWaitlist = onSnapshot(collection(db, 'waitlist'), (snap) => {
         setWaitlist(snap.docs.map(d => ({ id: d.id, ...d.data() } as WaitlistItem)));
       }, (error) => console.error("🚨 CRASH ON COLLECTION 'waitlist':", error.message));
       
-      // 🚨 ADDED ERROR CATCHER
       unsubClientNotes = onSnapshot(collection(db, 'clientNotes'), (snap) => {
         const notesMap: Record<string, string> = {};
         snap.docs.forEach(d => { notesMap[d.id] = (d.data() as any).notes || ''; });

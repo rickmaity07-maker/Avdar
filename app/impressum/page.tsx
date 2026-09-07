@@ -1,0 +1,64 @@
+import Link from "next/link";
+
+export const metadata = { title: "Impressum | Avdar" };
+
+function Section({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <section className="mb-10">
+      <h2 className="text-xl font-serif text-gold-400 mb-3">{title}</h2>
+      <div className="text-zinc-300 text-sm leading-relaxed space-y-2">{children}</div>
+    </section>
+  );
+}
+
+export default function ImpressumPage() {
+  return (
+    <main className="min-h-screen bg-black text-white px-6 md:px-8 py-24">
+      <div className="max-w-2xl mx-auto">
+        <Link href="/" className="text-xs uppercase tracking-widest text-zinc-500 hover:text-gold-400 transition-colors">
+          ← Back to Avdar
+        </Link>
+
+        <h1 className="text-3xl md:text-4xl font-serif mt-6 mb-2">Impressum</h1>
+
+        <div className="mb-12 p-4 border border-gold-700/60 bg-gold-900/20 text-gold-200 text-xs leading-relaxed">
+          The bracketed placeholders must be filled in with your real business details before this
+          site goes live — an incomplete Impressum is itself a legal risk under §5 DDG. Have a lawyer
+          or a service like eRecht24 verify the final text.
+        </div>
+
+        <Section title="Angaben gemäß § 5 DDG">
+          <p>Avdar</p>
+          <p>[Vollständiger Name des Inhabers/der Inhaberin bzw. Rechtsform]</p>
+          <p>Obere Str. 30</p>
+          <p>97421 Schweinfurt</p>
+        </Section>
+
+        <Section title="Kontakt">
+          <p>Telefon: 01523 2163823</p>
+          <p>E-Mail: [kontakt@ihre-domain.de]</p>
+        </Section>
+
+        <Section title="Umsatzsteuer-ID">
+          <p>[Umsatzsteuer-Identifikationsnummer gemäß §27a UStG, falls vorhanden — sonst entfernen]</p>
+        </Section>
+
+        <Section title="Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV">
+          <p>[Name und Anschrift der verantwortlichen Person]</p>
+        </Section>
+
+        <Section title="EU-Streitschlichtung">
+          <p>
+            Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:{" "}
+            <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" className="text-gold-400 underline">
+              https://ec.europa.eu/consumers/odr/
+            </a>
+            . Unsere E-Mail-Adresse finden Sie oben. Wir sind nicht bereit oder verpflichtet, an
+            Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+            [Anpassen, falls dies nicht zutrifft.]
+          </p>
+        </Section>
+      </div>
+    </main>
+  );
+}
