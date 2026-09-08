@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export const metadata = { title: "Impressum | Avdar" };
+export const metadata = { title: "Impressum | Dhurdur" };
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -16,7 +16,7 @@ export default function ImpressumPage() {
     <main className="min-h-screen bg-black text-white px-6 md:px-8 py-24">
       <div className="max-w-2xl mx-auto">
         <Link href="/" className="text-xs uppercase tracking-widest text-zinc-500 hover:text-gold-400 transition-colors">
-          ← Back to Avdar
+          ← Back to Dhurdur
         </Link>
 
         <h1 className="text-3xl md:text-4xl font-serif mt-6 mb-2">Impressum</h1>
@@ -28,7 +28,7 @@ export default function ImpressumPage() {
         </div>
 
         <Section title="Angaben gemäß § 5 DDG">
-          <p>Avdar</p>
+          <p>Dhurdur</p>
           <p>[Vollständiger Name des Inhabers/der Inhaberin bzw. Rechtsform]</p>
           <p>Obere Str. 30</p>
           <p>97421 Schweinfurt</p>

@@ -90,8 +90,8 @@ export function ProfileView() {
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
         body: JSON.stringify({
           email: currentUser.email,
-          subject: "Avdar: Password Change Confirmation",
-          message: `Hi ${currentUser.name},\n\nYour confirmation code for the password change is: ${otp}\n\nIf you did not request this change, please ignore this email.\n\nThe Avdar Team`
+          subject: "Dhurdur: Password Change Confirmation",
+          message: `Hi ${currentUser.name},\n\nYour confirmation code for the password change is: ${otp}\n\nIf you did not request this change, please ignore this email.\n\nThe Dhurdur Team`
         })
       });
       addNotification("Confirmation code sent to your email!", "info");

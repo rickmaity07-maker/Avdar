@@ -45,6 +45,18 @@ export async function POST(req: NextRequest) {
 
     const { email, subject, message, fromEmail, fromName } = validation.data;
 
+    // Non-admins may only trigger an email to their OWN verified address —
+    // never an arbitrary third party. Admin notifications still go through
+    // this same route (the app sends them to a fixed admin inbox), so we
+    // also allow the configured admin address specifically.
+    const isSelf = email.toLowerCase() === (decodedToken.email || '').toLowerCase();
+    const isConfiguredAdmin = email.toLowerCase() === (process.env.NEXT_PUBLIC_ADMIN_EMAIL || '').toLowerCase();
+    if (userRole !== 'admin' && !isSelf && !isConfiguredAdmin) {
+      const auditLog = createAuditLog(req, userId, userRole, 'email_send', undefined, 'notification', false, 'Recipient not permitted for non-admin caller');
+      logAudit(auditLog);
+      return NextResponse.json({ error: 'Forbidden: cannot email this recipient' }, { status: 403 });
+    }
+
     const emailUser = process.env.EMAIL_USER;
     const emailPass = process.env.EMAIL_PASS;
 

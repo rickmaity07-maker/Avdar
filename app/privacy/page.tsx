@@ -1,8 +1,8 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Privacy Policy | Avdar",
-  description: "How Avdar collects, uses, and protects your data.",
+  title: "Privacy Policy | Dhurdur",
+  description: "How Dhurdur collects, uses, and protects your data.",
 };
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
@@ -19,22 +19,22 @@ export default function PrivacyPolicy() {
     <main className="min-h-screen bg-black text-white px-6 md:px-8 py-24">
       <div className="max-w-2xl mx-auto">
         <Link href="/" className="text-xs uppercase tracking-widest text-zinc-500 hover:text-gold-400 transition-colors">
-          ← Back to Avdar
+          ← Back to Dhurdur
         </Link>
 
         <h1 className="text-3xl md:text-4xl font-serif mt-6 mb-2">Privacy Policy</h1>
         <p className="text-zinc-500 text-xs uppercase tracking-widest mb-12">Last updated — [add date before publishing]</p>
 
         <div className="mb-12 p-4 border border-gold-700/60 bg-gold-900/20 text-gold-200 text-xs leading-relaxed">
-          This page was drafted from what the Avdar booking site actually collects and sends, to replace a
+          This page was drafted from what the Dhurdur booking site actually collects and sends, to replace a
           broken link. It is a starting point, not legal advice — have it reviewed against German/EU law
           (DSGVO, TTDSG) before treating it as final, and fill in the bracketed placeholders.
         </div>
 
         <Section title="Who this covers">
           <p>
-            This policy applies to the Avdar website and booking system at [your domain], operated by
-            [Avdar — legal name / owner, business address]. For questions about this policy or your data,
+            This policy applies to the Dhurdur website and booking system at [your domain], operated by
+            [Dhurdur — legal name / owner, business address]. For questions about this policy or your data,
             contact [privacy contact email].
           </p>
         </Section>
@@ -80,7 +80,7 @@ export default function PrivacyPolicy() {
         </Section>
 
         <Section title="Contact">
-          <p>[Avdar — legal name], [address], [email], [phone]. If you&apos;ve appointed a Datenschutzbeauftragter (data protection officer), name them here.</p>
+          <p>[Dhurdur — legal name], [address], [email], [phone]. If you&apos;ve appointed a Datenschutzbeauftragter (data protection officer), name them here.</p>
         </Section>
       </div>
     </main>

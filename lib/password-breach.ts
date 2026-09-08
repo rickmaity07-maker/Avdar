@@ -34,7 +34,7 @@ export async function checkPasswordBreach(password: string): Promise<{ pwned: bo
     // Call HIBP API with k-anonymity
     const response = await fetch(`https://api.pwnedpasswords.com/range/${prefix}`, {
       headers: {
-        'User-Agent': 'Avdar-Security-Check',
+        'User-Agent': 'Dhurdur-Security-Check',
         'Add-Padding': 'true', // Adds padding for privacy
       },
       signal: AbortSignal.timeout(5000),
@@ -129,7 +129,7 @@ export async function checkPasswordBreachServer(password: string): Promise<{ pwn
   
   try {
     const response = await fetch(`https://api.pwnedpasswords.com/range/${prefix}`, {
-      headers: { 'User-Agent': 'Avdar-Server-Check' },
+      headers: { 'User-Agent': 'Dhurdur-Server-Check' },
       signal: AbortSignal.timeout(5000),
     });
     

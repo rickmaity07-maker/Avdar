@@ -1,7 +1,7 @@
 import 'server-only';
 import { NextRequest, NextResponse } from 'next/server';
 import twilio from 'twilio';
-import { adminAuth } from '@/lib/firebaseAdmin';
+import { adminAuth, adminDb } from '@/lib/firebaseAdmin';
 import { validateRequest, smsRequestSchema, createAuditLog, logAudit } from '@/lib/validation';
 
 export async function POST(req: NextRequest) {
@@ -44,6 +44,18 @@ export async function POST(req: NextRequest) {
     }
 
     const { phone, message } = validation.data;
+
+    // Non-admins may only trigger an SMS to their OWN phone on file.
+    if (userRole !== 'admin') {
+      const userDoc = await adminDb.collection('users').doc(userId!).get();
+      const ownPhone = (userDoc.data()?.phone || '').replace(/\s+/g, '');
+      const targetPhone = phone.replace(/\s+/g, '');
+      if (!ownPhone || ownPhone !== targetPhone) {
+        const auditLog = createAuditLog(req, userId, userRole, 'sms_send', undefined, 'appointment', false, 'Recipient phone not permitted for non-admin caller');
+        logAudit(auditLog);
+        return NextResponse.json({ error: 'Forbidden: cannot SMS this number' }, { status: 403 });
+      }
+    }
 
     const accountSid = process.env.TWILIO_ACCOUNT_SID;
     const authToken = process.env.TWILIO_AUTH_TOKEN;

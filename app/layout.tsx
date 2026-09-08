@@ -4,7 +4,7 @@ import { AppProvider } from '@/context/AppContext'
 import { CookieConsentProvider, CookieConsentBanner } from '@/components/CookieConsent'
 
 export const metadata: Metadata = {
-  title: 'Avdar | Preview',
+  title: 'Dhurdur | Preview',
   description: 'Where Style Meets Craft',
 }
 

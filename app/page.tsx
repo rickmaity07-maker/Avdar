@@ -33,7 +33,7 @@ const fadeIn: Variants = {
 // ==========================================
 // 1. MAIN COMPONENT (ROUTER)
 // ==========================================
-export default function AvdarApp() {
+export default function DhurdurApp() {
   const { isAdminAuth, logout, t } = useApp();
   // Whether an admin who is logged in is currently viewing the dashboard.
   // Defaults to false so admins land on the public site first, same as
@@ -56,7 +56,7 @@ export default function AvdarApp() {
       {isAdminAuth && !showAdmin && (
         <button
           onClick={() => setAdminPanelOpen(true)}
-          className="fixed bottom-6 right-6 z-[70] gold-shine-btn text-black px-5 py-3 text-sm uppercase tracking-widest shadow-2xl transition-colors flex items-center gap-2"
+          className="fixed bottom-6 right-6 z-70 gold-shine-btn text-black px-5 py-3 text-sm uppercase tracking-widest shadow-2xl transition-colors flex items-center gap-2"
         >
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           {t.admin?.backToAdmin || "Back to Admin"}
@@ -74,7 +74,7 @@ export default function AvdarApp() {
 function ToastContainer() {
   const { notifications } = useApp();
   return (
-    <div className="fixed top-20 md:top-24 right-4 md:right-6 z-[999] flex flex-col gap-2 pointer-events-none">
+    <div className="fixed top-20 md:top-24 right-4 md:right-6 z-999 flex flex-col gap-2 pointer-events-none">
       {notifications.map(n => (
         <div key={n.id} className={`p-4 shadow-2xl pointer-events-auto border-l-4 text-xs md:text-sm bg-zinc-950 ${n.type === 'success' ? 'border-green-500 text-green-400' : n.type === 'error' ? 'border-red-500 text-red-400' : 'border-zinc-400 text-zinc-300'}`}>
           <p className="font-semibold">{n.message}</p>
@@ -551,7 +551,7 @@ function AdminDashboard({ onLogout, onPreviewSite }: { onLogout: () => void; onP
       <div className={`w-64 border-r border-zinc-900 bg-black flex flex-col z-40 fixed md:static inset-y-0 left-0 transform transition-transform duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}>
         <div className="p-8 border-b border-zinc-900 flex items-center justify-between">
           <div>
-            <h2 className="text-2xl font-serif gold-shine-text">Avdar</h2>
+            <h2 className="text-2xl font-serif gold-shine-text">Dhurdur</h2>
             <p className="text-zinc-500 text-xs mt-1 uppercase tracking-widest">{t.admin?.workspace || "Workspace"}</p>
           </div>
           <button onClick={() => setSidebarOpen(false)} className="md:hidden text-zinc-500 hover:text-white">
@@ -682,7 +682,7 @@ function MainWebsite({ onEnterAdmin }: { onEnterAdmin: () => void }) {
       >
         <div className="max-w-7xl mx-auto flex justify-between items-center w-full">
           <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <span className="text-3xl md:text-4xl font-serif tracking-wide gold-shine-text transition-opacity hover:opacity-80">Avdar</span>
+            <span className="text-3xl md:text-4xl font-serif tracking-wide gold-shine-text transition-opacity hover:opacity-80">Dhurdur</span>
           </div>
           <div className="hidden md:flex gap-8 text-sm font-light items-center">
             {navLinks.map((link) => (
@@ -816,8 +816,8 @@ function MainWebsite({ onEnterAdmin }: { onEnterAdmin: () => void }) {
             alt="Background"
             className="w-full h-full object-cover opacity-50"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black"></div>
+          <div className="absolute inset-0 bg-linear-to-r from-black via-black/80 to-transparent"></div>
+          <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-black"></div>
         </motion.div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 mt-16">
@@ -899,7 +899,7 @@ function MainWebsite({ onEnterAdmin }: { onEnterAdmin: () => void }) {
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-px h-12 bg-gradient-to-b from-zinc-500 to-transparent"
+            className="w-px h-12 bg-linear-to-b from-zinc-500 to-transparent"
           ></motion.div>
         </motion.div>
       </section>
@@ -912,7 +912,7 @@ function MainWebsite({ onEnterAdmin }: { onEnterAdmin: () => void }) {
             alt=""
             className="w-full h-full object-cover opacity-20"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-black/85 to-black"></div>
+          <div className="absolute inset-0 bg-linear-to-brom-black via-black/85 to-black"></div>
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-8">
         <motion.div
@@ -1042,7 +1042,7 @@ function MainWebsite({ onEnterAdmin }: { onEnterAdmin: () => void }) {
             alt=""
             className="w-full h-full object-cover opacity-15"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-black"></div>
+          <div className="absolute inset-0 bg-linear-to-b from-black via-black/90 to-black"></div>
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-8">
         <motion.h2 
@@ -1091,7 +1091,7 @@ function MainWebsite({ onEnterAdmin }: { onEnterAdmin: () => void }) {
             alt=""
             className="w-full h-full object-cover opacity-15"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-black"></div>
+          <div className="absolute inset-0 bg-linear-to-b from-black via-black/90 to-black"></div>
         </div>
         <div className="relative z-10 max-w-4xl mx-auto px-8">
         <h2 className="text-5xl md:text-6xl font-serif mb-2 gold-shine-text inline-block">{t.booking?.title || "Book Your Next Cut"}</h2>
@@ -1126,17 +1126,17 @@ function MainWebsite({ onEnterAdmin }: { onEnterAdmin: () => void }) {
             viewport={{ once: false, margin: "-50px" }} 
             transition={{ duration: 1.2, type: "spring" }} 
           >
-            <h2 className="text-5xl md:text-7xl font-serif mb-6 gold-shine-text">Avdar</h2>
-            <p className="text-zinc-400 text-sm leading-relaxed mb-8">{t.footerSection?.tagline || <>At Avdar, every appointment is built around <strong className="text-white font-normal">precision, craftsmanship, and personal style</strong>.</>}</p>
+            <h2 className="text-5xl md:text-7xl font-serif mb-6 gold-shine-text">Dhurdur</h2>
+            <p className="text-zinc-400 text-sm leading-relaxed mb-8">{t.footerSection?.tagline || <>At Dhurdur, every appointment is built around <strong className="text-white font-normal">precision, craftsmanship, and personal style</strong>.</>}</p>
 
             <div className="flex gap-4">
-              <a href="https://www.instagram.com/avdar_barber/" target="_blank" rel="noopener noreferrer" aria-label="Avdar on Instagram" className="w-10 h-10 border border-zinc-800 flex items-center justify-center hover:border-gold-500 hover:bg-gold-500 hover:text-black transition-colors">
+              <a href="https://www.instagram.com/Dhurdur_barber/" target="_blank" rel="noopener noreferrer" aria-label="Dhurdur on Instagram" className="w-10 h-10 border border-zinc-800 flex items-center justify-center hover:border-gold-500 hover:bg-gold-500 hover:text-black transition-colors">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
               </a>
-              <a href="https://www.tiktok.com/@avdar.barber" target="_blank" rel="noopener noreferrer" aria-label="Avdar on TikTok" className="w-10 h-10 border border-zinc-800 flex items-center justify-center hover:border-gold-500 hover:bg-gold-500 hover:text-black transition-colors">
+              <a href="https://www.tiktok.com/@Dhurdur.barber" target="_blank" rel="noopener noreferrer" aria-label="Dhurdur on TikTok" className="w-10 h-10 border border-zinc-800 flex items-center justify-center hover:border-gold-500 hover:bg-gold-500 hover:text-black transition-colors">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/></svg>
               </a>
-              <a href="https://www.facebook.com/profile.php?id=61591614046660" target="_blank" rel="noopener noreferrer" aria-label="Avdar on Facebook" className="w-10 h-10 border border-zinc-800 flex items-center justify-center hover:border-gold-500 hover:bg-gold-500 hover:text-black transition-colors">
+              <a href="https://www.facebook.com/profile.php?id=61591614046660" target="_blank" rel="noopener noreferrer" aria-label="Dhurdur on Facebook" className="w-10 h-10 border border-zinc-800 flex items-center justify-center hover:border-gold-500 hover:bg-gold-500 hover:text-black transition-colors">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.96h-1.51c-1.49 0-1.95.93-1.95 1.89v2.26h3.32l-.53 3.49h-2.79V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
               </a>
             </div>
@@ -1175,7 +1175,7 @@ function MainWebsite({ onEnterAdmin }: { onEnterAdmin: () => void }) {
         </div>
 
                 <div className="max-w-7xl mx-auto relative z-10 mt-16 pt-8 border-t border-zinc-900 text-xs text-zinc-600 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <span>© {new Date().getFullYear()} Avdar. {t.footerSection?.allRightsReserved || "All rights reserved."}</span>
+          <span>© {new Date().getFullYear()} Dhurdur. {t.footerSection?.allRightsReserved || "All rights reserved."}</span>
           <div className="flex gap-4 uppercase tracking-widest">
             <a href="/impressum" className="hover:text-gold-400 transition-colors">Impressum</a>
             <a href="/privacy" className="hover:text-gold-400 transition-colors">Privacy</a>
@@ -1194,7 +1194,7 @@ function ClientProfileOverlay({ onClose }: { onClose: () => void }) {
   const { t } = useApp();
 
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[60] bg-black overflow-y-auto">
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-60 bg-black overflow-y-auto">
       <div className="sticky top-0 z-10 bg-black/90 backdrop-blur-lg border-b border-zinc-800 px-8 py-5 flex justify-between items-center">
         <span className="text-2xl font-serif">{t.profile?.myAccount || "My Account"}</span>
         <button onClick={onClose} className="text-zinc-500 hover:text-white transition-colors text-sm">{t.profile?.close || "Close"}</button>
@@ -1276,7 +1276,7 @@ function ClientAuthModal({ onClose, loginEmail, registerEmail, loginOAuth, reset
   };
 
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[60] flex items-center justify-center px-4">
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-60 flex items-center justify-center px-4">
       <div className="absolute inset-0 bg-black/80 backdrop-blur-md" onClick={onClose}></div>
       <motion.div initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ type: 'spring', duration: 0.8 }} className="relative z-10 w-full max-w-md border border-zinc-800 bg-black p-6 sm:p-10">
         <div className="flex justify-between items-center mb-8">

@@ -10,7 +10,7 @@ rules in this repo, until you push them:
 ```bash
 npm install -g firebase-tools   # if you don't have it
 firebase login
-firebase use --add                     # select/create the Avdar Firebase project
+firebase use --add                     # select/create the Dhurdur Firebase project
 firebase deploy --only firestore:rules,storage:rules
 ```
 

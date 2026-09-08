@@ -16,7 +16,7 @@ export interface ConsentState {
   version: string;     // Consent version for updates
 }
 
-const CONSENT_KEY = 'avdar-consent';
+const CONSENT_KEY = 'Dhurdur-consent';
 const CONSENT_VERSION = '1.0';
 
 // Default: only necessary cookies

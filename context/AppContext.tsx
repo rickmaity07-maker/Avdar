@@ -75,7 +75,7 @@ export const fallbackTranslations: TranslationData = {
     common: { loading: "Lädt...", searchLang: "Sprache suchen...", noResults: "Keine gefunden.", footer: "Alle Rechte vorbehalten.", design: "Design", at: "um", by: "bei" },
     nav: { home: "Startseite", services: "Leistungen", gallery: "Galerie", team: "Team", products: "Produkte", contact: "Kontakt", contacts: "Kontakt", book: "Termin buchen", login: "Anmelden", profile: "Profil", myAccount: "Mein Konto", logout: "Abmelden", admin: "Admin Panel", language: "Sprache" }, 
     hero: { titleLine1: "Wo Stil auf", titleWordItalic: "Handwerk", titleLine2: "trifft.", sub: "Präzision, Handwerkskunst und ein kompromissloser Blick fürs Detail neu definiert.", bookBtn: "Termin buchen", location: "Standort", todaysHours: "Heutige Öffnungszeiten", openUntil: "Geöffnet bis", opensAt: "Öffnet um", closedNow: "Geschlossen", closedToday: "Heute geschlossen", walkin: "Ohne Termin möglich (Wartezeit", walkinSuffix: ")" }, 
-    about: { title: "Über Uns", text: "Willkommen bei Avdar." }, 
+    about: { title: "Über Uns", text: "Willkommen bei Dhurdur." }, 
     services: { title: "Unsere Leistungen", subtitle: "Goldenes Angebot Jeden Dienstag", min: "Minuten", from: "Ab", items: [
       { title: "Klassischer Haarschnitt", desc: "Präzisionsschnitt, abgestimmt auf Ihren Stil und Ihre Gesichtsform.", price: "35" },
       { title: "Skin Fade", desc: "Sauberer Fade mit nahtlosem Übergang und scharfen Konturen.", price: "40" },
@@ -96,7 +96,7 @@ export const fallbackTranslations: TranslationData = {
       { name: "Marcus Steele", role: "Senior Barber" },
     ] },
     numbers: { title: "Die Zahlen", years: "Jahre Erfahrung", clients: "Zufriedene Kunden", rating: "Kundenbewertung" },
-    footerSection: { tagline: "Bei Avdar dreht sich jeder Termin um Präzision, Handwerkskunst und persönlichen Stil.", visit: "Besuchen Sie uns", openingHours: "Öffnungszeiten", monToSat: "Montag – Samstag", sunday: "Sonntag", closed: "Geschlossen", allRightsReserved: "Alle Rechte vorbehalten." },
+    footerSection: { tagline: "Bei Dhurdur dreht sich jeder Termin um Präzision, Handwerkskunst und persönlichen Stil.", visit: "Besuchen Sie uns", openingHours: "Öffnungszeiten", monToSat: "Montag – Samstag", sunday: "Sonntag", closed: "Geschlossen", allRightsReserved: "Alle Rechte vorbehalten." },
     products: { title: "Store & Produkte", subtitle: "Professionelle Pflege für Zuhause" }, 
     contact: { title: "Kontakt", subtitle: "Besuchen Sie uns", addressLabel: "Adresse", address: "Obere Str. 30, 97421 Schweinfurt", phoneLabel: "Telefon", phone: "01523 2163823", hoursLabel: "Öffnungszeiten", hours: [ { days: "Montag - Samstag", time: "09:00 - 18:00 Uhr" }, { days: "Sonntag", time: "Geschlossen" } ], socialLabel: "Social Media" }, 
     auth: { loginTitle: "Anmelden", loginSub: "Um einen Termin zu buchen, melden Sie sich bitte an.", email: "E-Mail-Adresse", pass: "Passwort", loginBtn: "Einloggen", register: "Oder neu registrieren", social: "Mit Social Media fortfahren", noAccount: "Noch kein Konto?", haveAccount: "Bereits ein Konto?", registerTitle: "Konto erstellen", resetPassBtn: "Passwort vergessen?", passStrength: "Passwort-Stärke:", weak: "Schwach", medium: "Mittel", strong: "Stark", ruleLength: "Mindestens 8 Zeichen", ruleUpper: "Ein Großbuchstabe", ruleLower: "Ein Kleinbuchstabe", ruleNum: "Eine Zahl", ruleSpec: "Ein Sonderzeichen", continueGoogle: "Mit Google fortfahren", continueFacebook: "Mit Facebook fortfahren", or: "oder", cancel: "Abbrechen", pleaseWait: "Bitte warten…", fullName: "Vollständiger Name" }, 
@@ -139,7 +139,7 @@ export const fallbackTranslations: TranslationData = {
     common: { loading: "Loading...", searchLang: "Search language...", noResults: "None found.", footer: "All rights reserved.", design: "Design", at: "at", by: "with" },
     nav: { home: "Home", services: "Services", gallery: "Gallery", team: "Team", products: "Products", contact: "Contact", contacts: "Contacts", book: "Book Now", login: "Login", profile: "Profile", myAccount: "My Account", logout: "Log Out", admin: "Admin Panel", language: "Language" }, 
     hero: { titleLine1: "Where", titleWordItalic: "Style", titleLine2: "Meets Craft.", sub: "Elevating the traditional grooming experience through precision, artistry, and an uncompromising attention to detail.", bookBtn: "Book Appointment", location: "Location", todaysHours: "Today's Hours", openUntil: "Open until", opensAt: "Opens at", closedNow: "Closed now", closedToday: "Closed today", walkin: "Walk-in possible (Waiting time", walkinSuffix: ")" }, 
-    about: { title: "About Us", text: "Welcome to Avdar." }, 
+    about: { title: "About Us", text: "Welcome to Dhurdur." }, 
     services: { title: "Our Services", subtitle: "Golden Offer Every Tuesday", min: "minutes", from: "From", items: [
       { title: "Classic Haircut", desc: "Precision cut tailored to your style and face shape.", price: "35" },
       { title: "Skin Fade", desc: "Clean fade with seamless blending and sharp detailing.", price: "40" },
@@ -160,7 +160,7 @@ export const fallbackTranslations: TranslationData = {
       { name: "Marcus Steele", role: "Senior Barber" },
     ] },
     numbers: { title: "The Numbers", years: "Years of experience", clients: "Happy clients", rating: "Client rating" },
-    footerSection: { tagline: "At Avdar, every appointment is built around precision, craftsmanship, and personal style.", visit: "Visit", openingHours: "Opening Hours", monToSat: "Monday – Saturday", sunday: "Sunday", closed: "Closed", allRightsReserved: "All rights reserved." },
+    footerSection: { tagline: "At Dhurdur, every appointment is built around precision, craftsmanship, and personal style.", visit: "Visit", openingHours: "Opening Hours", monToSat: "Monday – Saturday", sunday: "Sunday", closed: "Closed", allRightsReserved: "All rights reserved." },
     products: { title: "Store & Products", subtitle: "Professional care for home" }, 
     contact: { title: "Contact Us", subtitle: "Visit us", addressLabel: "Address", address: "Obere Str. 30, 97421 Schweinfurt", phoneLabel: "Phone", phone: "01523 2163823", hoursLabel: "Opening Hours", hours: [ { days: "Monday - Saturday", time: "9:00 AM - 6:00 PM" }, { days: "Sunday", time: "Closed" } ], socialLabel: "Social Media" }, 
     auth: { loginTitle: "Login", loginSub: "Please log in to book an appointment.", email: "Email Address", pass: "Password", loginBtn: "Sign In", register: "Or create an account", social: "Continue with Social", noAccount: "Don't have an account?", haveAccount: "Already have an account?", registerTitle: "Create Account", resetPassBtn: "Forgot Password?", passStrength: "Password Strength:", weak: "Weak", medium: "Medium", strong: "Strong", ruleLength: "At least 8 characters", ruleUpper: "One uppercase letter", ruleLower: "One lowercase letter", ruleNum: "One number", ruleSpec: "One special character", continueGoogle: "Continue with Google", continueFacebook: "Continue with Facebook", or: "or", cancel: "Cancel", pleaseWait: "Please wait…", fullName: "Full Name" }, 
@@ -217,6 +217,9 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const [servicesDB, setServicesDB] = useState<ServiceItem[]>([]);
   const [productsDB, setProductsDB] = useState<ProductItem[]>([]);
   const [appointments, setAppointments] = useState<Appointment[]>([]);
+  const [publicAppointments, setPublicAppointments] = useState<
+    Pick<Appointment, "date" | "time" | "stylist" | "totalDurationMins" | "status" | "proposedTime">[]
+  >([]);
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [alerts, setAlerts] = useState<Alert[]>([]);
   const [waitlist, setWaitlist] = useState<WaitlistItem[]>([]);
@@ -225,7 +228,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const [stylistsDB, setStylistsDB] = useState<StylistItem[]>([]);
   const [generalSettings, setGeneralSettings] = useState<GeneralSettings>({ walkinWaitTime: 'ca. 30 Minuten', holidays: [] });
 
-  const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL || 'admin@avdar.com';
+  const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL || 'admin@Dhurdur.com';
   
   const getAuthHeaders = async () => {
     const token = auth.currentUser ? await auth.currentUser.getIdToken() : '';
@@ -411,6 +414,26 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     };
   }, [isAdminAuth]);
 
+  // PII-free availability data for slot checking (works for guests + customers)
+  useEffect(() => {
+    let cancelled = false;
+    const fetchSlots = async () => {
+      try {
+        const res = await fetch("/api/available-slots", { cache: "no-store" });
+        const data = await res.json();
+        if (!cancelled) setPublicAppointments(data.slots || []);
+      } catch (e) {
+        console.error("🚨 Failed to load availability:", e);
+      }
+    };
+    fetchSlots();
+    const interval = setInterval(fetchSlots, 30000); // keep availability fresh while the app is open
+    return () => {
+      cancelled = true;
+      clearInterval(interval);
+    };
+  }, []);
+
   const changeLanguage = async (newLang: string) => {
     if (newLang === lang) return;
     if (newLang === 'de' || translations[newLang]) {
@@ -462,7 +485,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       
       let isBooked = false;
       if (stylist && stylist !== 'Egal (Wer frei ist)' && stylist !== 'Any' && stylist !== translations[lang]?.booking?.stylistAny) {
-        isBooked = appointments.some(a => {
+        isBooked = publicAppointments.some(a => {
           if (a.date !== date || (a.status !== 'confirmed' && a.status !== 'pending' && a.status !== 'proposed' && a.status !== 'blocked')) return false;
           if (a.stylist !== stylist && a.stylist !== 'Egal (Wer frei ist)' && a.stylist !== 'Any' && a.stylist !== translations[lang]?.booking?.stylistAny) return false;
           
@@ -477,7 +500,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       } else {
         let overlaps = 0;
         realStylists.forEach(sName => {
-          const sBooked = appointments.some(a => {
+          const sBooked = publicAppointments.some(a => {
             if (a.date !== date || (a.status !== 'confirmed' && a.status !== 'pending' && a.status !== 'proposed' && a.status !== 'blocked')) return false;
             if (a.stylist !== sName && a.stylist !== 'Egal (Wer frei ist)' && a.stylist !== 'Any' && a.stylist !== translations[lang]?.booking?.stylistAny) return false;
             
@@ -586,15 +609,15 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const notifyWaitlist = async (item: WaitlistItem) => {
     if (item.phone) {
       const cleanPhone = item.phone.replace(/\s+/g, '');
-      fetch('/api/sms', { method: 'POST', headers: await getAuthHeaders(), body: JSON.stringify({ phone: cleanPhone, message: `Avdar: Ein Termin am ${item.date} bei ${item.stylist} ist freigeworden! Buche jetzt online.` }) }).catch(()=>{});
+      fetch('/api/sms', { method: 'POST', headers: await getAuthHeaders(), body: JSON.stringify({ phone: cleanPhone, message: `Dhurdur: Ein Termin am ${item.date} bei ${item.stylist} ist freigeworden! Buche jetzt online.` }) }).catch(()=>{});
     }
     const userDoc = await getDoc(doc(db, 'users', item.userId));
     const userEmail = userDoc.exists() ? userDoc.data().email : null;
     if (userEmail) {
       await sendDualEmail(
         userEmail,
-        "Avdar: Warteliste Update - Freier Termin!",
-        `Hallo ${item.name},\n\nGute Neuigkeiten! Ein Termin am ${item.date} bei ${item.stylist} ist gerade freigeworden.\n\nBitte besuche unsere Webseite, um ihn direkt zu buchen, bevor er weg ist!\n\nDein Avdar Team`,
+        "Dhurdur: Warteliste Update - Freier Termin!",
+        `Hallo ${item.name},\n\nGute Neuigkeiten! Ein Termin am ${item.date} bei ${item.stylist} ist gerade freigeworden.\n\nBitte besuche unsere Webseite, um ihn direkt zu buchen, bevor er weg ist!\n\nDein Dhurdur Team`,
         "", ""
       );
     }
@@ -609,13 +632,13 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     
     if (appt.sendsms && appt.phone) {
       const cleanPhone = appt.phone.replace(/\s+/g, '');
-      fetch('/api/sms', { method: 'POST', headers: await getAuthHeaders(), body: JSON.stringify({ phone: cleanPhone, message: `Avdar (Erinnerung): Dein Termin am ${appt.date} um ${appt.time} Uhr ist bestätigt!` }) }).catch(()=>{});
+      fetch('/api/sms', { method: 'POST', headers: await getAuthHeaders(), body: JSON.stringify({ phone: cleanPhone, message: `Dhurdur (Erinnerung): Dein Termin am ${appt.date} um ${appt.time} Uhr ist bestätigt!` }) }).catch(()=>{});
     }
     
     await sendDualEmail(
       userEmail,
-      "Avdar: Terminbestätigung (Erneut gesendet)",
-      `Hallo ${appt.name},\n\nDies ist eine Erinnerung an deinen bestätigten Termin am ${appt.date} um ${appt.time} Uhr bei ${appt.stylist}.\n\nWir freuen uns auf dich.\nAvdar`,
+      "Dhurdur: Terminbestätigung (Erneut gesendet)",
+      `Hallo ${appt.name},\n\nDies ist eine Erinnerung an deinen bestätigten Termin am ${appt.date} um ${appt.time} Uhr bei ${appt.stylist}.\n\nWir freuen uns auf dich.\nDhurdur`,
       "", ""
     );
     addNotification("Bestätigung erfolgreich erneut gesendet!", 'success');
@@ -638,8 +661,8 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     
     await sendDualEmail(
       currentUser.email,
-      "Avdar: Buchungsanfrage erhalten",
-      `Hallo ${appt.name},\n\nDeine Anfrage für ${appt.services.join(', ')} am ${appt.date} um ${appt.time} Uhr wurde an den Salon übermittelt.\n\nWir prüfen derzeit die Verfügbarkeit und werden deinen Termin in Kürze bestätigen.\n\nDein Avdar Team`,
+      "Dhurdur: Buchungsanfrage erhalten",
+      `Hallo ${appt.name},\n\nDeine Anfrage für ${appt.services.join(', ')} am ${appt.date} um ${appt.time} Uhr wurde an den Salon übermittelt.\n\nWir prüfen derzeit die Verfügbarkeit und werden deinen Termin in Kürze bestätigen.\n\nDein Dhurdur Team`,
       "🚨 Neuer Termin eingegangen!",
       `Hallo Admin,\n\nEs gibt eine neue Buchung:\nKunde: ${appt.name} (${appt.phone})\nLeistungen: ${appt.services.join(', ')} (${appt.totalDurationMins} Min)\nDatum: ${appt.date} um ${appt.time} Uhr\nStylist: ${appt.stylist}\nWünsche: ${appt.specialRequests || '-'}\n\nBitte logge dich im Admin-Panel ein, um den Termin zu bestätigen, abzulehnen oder zu verschieben.`
     );
@@ -694,14 +717,14 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     if (status === 'confirmed' && appt.status !== 'confirmed') {
         if (sendsms && appt.phone) {
           const cleanPhone = appt.phone.replace(/\s+/g, '');
-          fetch('/api/sms', { method: 'POST', headers: await getAuthHeaders(), body: JSON.stringify({ phone: cleanPhone, message: `Avdar: Dein Termin am ${finalDate} um ${finalTime} Uhr ist bestätigt!` }) }).catch(()=>{});
+          fetch('/api/sms', { method: 'POST', headers: await getAuthHeaders(), body: JSON.stringify({ phone: cleanPhone, message: `Dhurdur: Dein Termin am ${finalDate} um ${finalTime} Uhr ist bestätigt!` }) }).catch(()=>{});
         }
         
         await addDoc(collection(db, 'alerts'), { userId: appt.userId, message: `${tAlert.confirmed1} ${finalDate} ${tCommon.at} ${finalTime} ${tAlert.confirmed2}`, isRead: false, link: 'profile', createdAt: Date.now() });
         await sendDualEmail(
           userEmail,
-          "Avdar: Terminbestätigung",
-          `Hallo ${appt.name},\n\nDein Termin am ${finalDate} um ${finalTime} Uhr bei ${appt.stylist} ist offiziell bestätigt!\n\nWir freuen uns auf dich.\nAvdar`,
+          "Dhurdur: Terminbestätigung",
+          `Hallo ${appt.name},\n\nDein Termin am ${finalDate} um ${finalTime} Uhr bei ${appt.stylist} ist offiziell bestätigt!\n\nWir freuen uns auf dich.\nDhurdur`,
           "Admin Info: Termin Bestätigt",
           `Der Termin für ${appt.name} am ${finalDate} um ${finalTime} Uhr wurde erfolgreich bestätigt.`
         );
@@ -711,8 +734,8 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         await addDoc(collection(db, 'alerts'), { userId: appt.userId, message: `${tAlert.cancelled1} ${appt.date} ${tAlert.cancelled2}`, isRead: false, link: 'profile', createdAt: Date.now() });
         await sendDualEmail(
           userEmail,
-          "Avdar: Terminabsage",
-          `Hallo ${appt.name},\n\nLeider mussten wir deine Terminanfrage für den ${appt.date} um ${appt.time} Uhr stornieren (z.B. aufgrund von Überbuchungen oder Überschneidungen).\n\nBitte buche einen neuen Termin auf unserer Webseite.\n\nDein Avdar Team`,
+          "Dhurdur: Terminabsage",
+          `Hallo ${appt.name},\n\nLeider mussten wir deine Terminanfrage für den ${appt.date} um ${appt.time} Uhr stornieren (z.B. aufgrund von Überbuchungen oder Überschneidungen).\n\nBitte buche einen neuen Termin auf unserer Webseite.\n\nDein Dhurdur Team`,
           "Admin Info: Termin Storniert",
           `Der Termin für ${appt.name} am ${appt.date} um ${appt.time} Uhr wurde storniert.`
         );
@@ -722,8 +745,8 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         await addDoc(collection(db, 'alerts'), { userId: appt.userId, message: `${tAlert.proposed1} ${proposedDate} ${tCommon.at} ${proposedTime}. ${tAlert.proposed2}`, isRead: false, link: 'profile', createdAt: Date.now() });
         await sendDualEmail(
           userEmail,
-          "Avdar: Terminvorschlag / Bitte bestätigen",
-          `Hallo ${appt.name},\n\nWir mussten deinen Termin am ${appt.date} um ${appt.time} leider verschieben.\n\nWir schlagen stattdessen vor:\nNeues Datum: ${proposedDate}\nNeue Uhrzeit: ${proposedTime}\n\nBitte logge dich auf unserer Webseite in dein Profil ein, um diesen neuen Termin zu akzeptieren oder abzulehnen.\n\nDein Avdar Team`,
+          "Dhurdur: Terminvorschlag / Bitte bestätigen",
+          `Hallo ${appt.name},\n\nWir mussten deinen Termin am ${appt.date} um ${appt.time} leider verschieben.\n\nWir schlagen stattdessen vor:\nNeues Datum: ${proposedDate}\nNeue Uhrzeit: ${proposedTime}\n\nBitte logge dich auf unserer Webseite in dein Profil ein, um diesen neuen Termin zu akzeptieren oder abzulehnen.\n\nDein Dhurdur Team`,
           "Admin Info: Termin verschoben (Kunde muss bestätigen)",
           `Du hast einen neuen Terminvorschlag an ${appt.name} gesendet. Neues Datum: ${proposedDate} um ${proposedTime} Uhr. Wartet auf Kundenbestätigung.`
         );

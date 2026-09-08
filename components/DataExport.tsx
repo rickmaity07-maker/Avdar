@@ -67,7 +67,7 @@ export function DataExportButton() {
       
       const link = document.createElement('a');
       link.href = url;
-      link.download = `avdar-datenexport-${currentUser.id}-${new Date().toISOString().split('T')[0]}.json`;
+      link.download = `Dhurdur-datenexport-${currentUser.id}-${new Date().toISOString().split('T')[0]}.json`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -167,7 +167,7 @@ export function DataExportModal({ isOpen, onClose }: { isOpen: boolean; onClose:
     
     const link = document.createElement('a');
     link.href = url;
-    link.download = `avdar-datenexport-${currentUser?.id}-${new Date().toISOString().split('T')[0]}.json`;
+    link.download = `Dhurdur-datenexport-${currentUser?.id}-${new Date().toISOString().split('T')[0]}.json`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

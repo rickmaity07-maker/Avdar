@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* Avdar brand accent — brushed gold, used sparingly against the black/white base */
+/* Dhurdur brand accent — brushed gold, used sparingly against the black/white base */
 @theme {
   --color-gold-50: #faf5e7;
   --color-gold-100: #f0e2b8;
