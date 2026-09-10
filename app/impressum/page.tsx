@@ -21,30 +21,24 @@ export default function ImpressumPage() {
 
         <h1 className="text-3xl md:text-4xl font-serif mt-6 mb-2">Impressum</h1>
 
-        <div className="mb-12 p-4 border border-gold-700/60 bg-gold-900/20 text-gold-200 text-xs leading-relaxed">
-          The bracketed placeholders must be filled in with your real business details before this
-          site goes live — an incomplete Impressum is itself a legal risk under §5 DDG. Have a lawyer
-          or a service like eRecht24 verify the final text.
-        </div>
-
         <Section title="Angaben gemäß § 5 DDG">
           <p>Dhurdur</p>
-          <p>[Vollständiger Name des Inhabers/der Inhaberin bzw. Rechtsform]</p>
+          <p>Inh. Oliver Hayes</p>
           <p>Obere Str. 30</p>
           <p>97421 Schweinfurt</p>
         </Section>
 
         <Section title="Kontakt">
           <p>Telefon: 01523 2163823</p>
-          <p>E-Mail: [kontakt@ihre-domain.de]</p>
+          <p>E-Mail: info@dhurdur.de</p>
         </Section>
 
         <Section title="Umsatzsteuer-ID">
-          <p>[Umsatzsteuer-Identifikationsnummer gemäß §27a UStG, falls vorhanden — sonst entfernen]</p>
+          <p>Kleinunternehmer gemäß § 19 UStG — keine Umsatzsteuer-ID ausgewiesen</p>
         </Section>
 
         <Section title="Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV">
-          <p>[Name und Anschrift der verantwortlichen Person]</p>
+          <p>Oliver Hayes, Obere Str. 30, 97421 Schweinfurt</p>
         </Section>
 
         <Section title="EU-Streitschlichtung">
@@ -55,7 +49,6 @@ export default function ImpressumPage() {
             </a>
             . Unsere E-Mail-Adresse finden Sie oben. Wir sind nicht bereit oder verpflichtet, an
             Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
-            [Anpassen, falls dies nicht zutrifft.]
           </p>
         </Section>
       </div>

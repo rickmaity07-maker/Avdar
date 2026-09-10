@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { adminDb } from '../../../lib/firebaseAdmin';
 import { validateRequest, translateUiRequestSchema, createAuditLog, logAudit } from '@/lib/validation';
+import { isRateLimited, getClientIp } from '@/lib/rateLimit';
 
 const DEEPL_API_KEY = process.env.DEEPL_API_KEY;
 const DEEPL_ENDPOINT = DEEPL_API_KEY?.endsWith(':fx')
@@ -23,6 +24,8 @@ const LANG_CODE_MAP: Record<string, string> = {
 
 type LeafPath = string[];
 
+const SKIP_KEYS = new Set(['id', 'holidays']);
+
 function flatten(obj: any, path: LeafPath = [], out: { path: LeafPath; text: string }[] = []) {
   if (typeof obj === 'string') {
     // CRITICAL FIX: Do not send empty strings to DeepL or it will crash with a 400 error
@@ -33,9 +36,16 @@ function flatten(obj: any, path: LeafPath = [], out: { path: LeafPath; text: str
     // CRITICAL FIX: Skip the images array entirely so we don't break image links
     if (path[path.length - 1] === 'images') return out;
     
+    // Skip translation for holidays array (dates don't need translation)
+    if (path[path.length - 1] === 'holidays') return out;
+    
     obj.forEach((item, i) => flatten(item, [...path, String(i)], out));
   } else if (obj && typeof obj === 'object') {
-    for (const key in obj) flatten(obj[key], [...path, key], out);
+    for (const key in obj) {
+      // Skip translation for id fields (UUIDs) and holidays array
+      if (SKIP_KEYS.has(key)) continue;
+      flatten(obj[key], [...path, key], out);
+    }
   }
   return out;
 }

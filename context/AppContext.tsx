@@ -68,12 +68,15 @@ export interface AppContextType {
   notifications: Notification[]; addNotification: (msg: string, type?: 'success' | 'info' | 'error') => void;
   alerts: Alert[]; markAlertRead: (id: string) => Promise<void>; clearAlerts: () => Promise<void>;
   getAvailableSlots: (date: string, stylist: string, requiredDuration?: number) => TimeSlot[];
+  getTranslatedServices: () => ServiceItem[];
+  getTranslatedStylists: () => StylistItem[];
+  getTranslatedGeneralSettings: () => GeneralSettings;
 }
 
 export const fallbackTranslations: TranslationData = {
   de: { 
     common: { loading: "Lädt...", searchLang: "Sprache suchen...", noResults: "Keine gefunden.", footer: "Alle Rechte vorbehalten.", design: "Design", at: "um", by: "bei" },
-    nav: { home: "Startseite", services: "Leistungen", gallery: "Galerie", team: "Team", products: "Produkte", contact: "Kontakt", contacts: "Kontakt", book: "Termin buchen", login: "Anmelden", profile: "Profil", myAccount: "Mein Konto", logout: "Abmelden", admin: "Admin Panel", language: "Sprache" }, 
+    nav: { home: "Startseite", services: "Leistungen", gallery: "Galerie", team: "Team", products: "Produkte", contact: "Kontakt", contacts: "Kontakt", book: "Termin buchen", login: "Anmelden", profile: "Profil", myAccount: "Mein Konto", logout: "Abmelden", admin: "Admin Panel", language: "Sprache", impressum: "Impressum", privacy: "Datenschutz", cookieSettings: "Cookie-Einstellungen" }, 
     hero: { titleLine1: "Wo Stil auf", titleWordItalic: "Handwerk", titleLine2: "trifft.", sub: "Präzision, Handwerkskunst und ein kompromissloser Blick fürs Detail neu definiert.", bookBtn: "Termin buchen", location: "Standort", todaysHours: "Heutige Öffnungszeiten", openUntil: "Geöffnet bis", opensAt: "Öffnet um", closedNow: "Geschlossen", closedToday: "Heute geschlossen", walkin: "Ohne Termin möglich (Wartezeit", walkinSuffix: ")" }, 
     about: { title: "Über Uns", text: "Willkommen bei Dhurdur." }, 
     services: { title: "Unsere Leistungen", subtitle: "Goldenes Angebot Jeden Dienstag", min: "Minuten", from: "Ab", items: [
@@ -137,7 +140,7 @@ export const fallbackTranslations: TranslationData = {
   },
   en: { 
     common: { loading: "Loading...", searchLang: "Search language...", noResults: "None found.", footer: "All rights reserved.", design: "Design", at: "at", by: "with" },
-    nav: { home: "Home", services: "Services", gallery: "Gallery", team: "Team", products: "Products", contact: "Contact", contacts: "Contacts", book: "Book Now", login: "Login", profile: "Profile", myAccount: "My Account", logout: "Log Out", admin: "Admin Panel", language: "Language" }, 
+    nav: { home: "Home", services: "Services", gallery: "Gallery", team: "Team", products: "Products", contact: "Contact", contacts: "Contacts", book: "Book Now", login: "Login", profile: "Profile", myAccount: "My Account", logout: "Log Out", admin: "Admin Panel", language: "Language", impressum: "Legal Notice", privacy: "Privacy", cookieSettings: "Cookie Settings" }, 
     hero: { titleLine1: "Where", titleWordItalic: "Style", titleLine2: "Meets Craft.", sub: "Elevating the traditional grooming experience through precision, artistry, and an uncompromising attention to detail.", bookBtn: "Book Appointment", location: "Location", todaysHours: "Today's Hours", openUntil: "Open until", opensAt: "Opens at", closedNow: "Closed now", closedToday: "Closed today", walkin: "Walk-in possible (Waiting time", walkinSuffix: ")" }, 
     about: { title: "About Us", text: "Welcome to Dhurdur." }, 
     services: { title: "Our Services", subtitle: "Golden Offer Every Tuesday", min: "minutes", from: "From", items: [
@@ -434,6 +437,40 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
+  const buildFullTranslationSource = () => {
+    const source = JSON.parse(JSON.stringify(fallbackTranslations.de));
+    
+    // Add dynamic services
+    if (servicesDB.length > 0) {
+      source.dynamicServices = servicesDB.map(s => ({
+        id: s.id,
+        name: s.name,
+        price: s.price,
+        oldPrice: s.oldPrice || '',
+        durationMins: s.durationMins
+      }));
+    }
+    
+    // Add dynamic stylists
+    if (stylistsDB.length > 0) {
+      source.dynamicStylists = stylistsDB.map(s => ({
+        id: s.id,
+        name: s.name,
+        services: s.services
+      }));
+    }
+    
+    // Add general settings (admin-editable content)
+    if (generalSettings) {
+      source.generalSettings = {
+        walkinWaitTime: generalSettings.walkinWaitTime || '',
+        holidays: generalSettings.holidays || []
+      };
+    }
+    
+    return source;
+  };
+
   const changeLanguage = async (newLang: string) => {
     if (newLang === lang) return;
     if (newLang === 'de' || translations[newLang]) {
@@ -443,10 +480,11 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
     setIsTranslatingUI(true);
     try {
+      const fullSourceDict = buildFullTranslationSource();
       const res = await fetch('/api/translate-ui', {
         method: 'POST',
         headers: await getAuthHeaders(),
-        body: JSON.stringify({ targetLang: newLang, sourceDict: fallbackTranslations.de })
+        body: JSON.stringify({ targetLang: newLang, sourceDict: fullSourceDict })
       });
       const data = await res.json();
       if (data.translatedDict) {
@@ -779,6 +817,40 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
   const t = translations[lang] || fallbackTranslations[lang] || fallbackTranslations.de;
 
+  // Helper to get translated dynamic content (services, stylists, generalSettings)
+  const getTranslatedServices = () => {
+    const trans = translations[lang];
+    if (trans?.dynamicServices && trans.dynamicServices.length > 0) {
+      return trans.dynamicServices.map((ts: any, i: number) => ({
+        ...servicesDB[i],
+        name: ts.name || servicesDB[i]?.name,
+        price: ts.price || servicesDB[i]?.price,
+        oldPrice: ts.oldPrice || servicesDB[i]?.oldPrice,
+      }));
+    }
+    return servicesDB;
+  };
+
+  const getTranslatedStylists = () => {
+    const trans = translations[lang];
+    if (trans?.dynamicStylists && trans.dynamicStylists.length > 0) {
+      return trans.dynamicStylists.map((ts: any, i: number) => ({
+        ...stylistsDB[i],
+        name: ts.name || stylistsDB[i]?.name,
+        services: ts.services || stylistsDB[i]?.services,
+      }));
+    }
+    return stylistsDB;
+  };
+
+  const getTranslatedGeneralSettings = () => {
+    const trans = translations[lang];
+    if (trans?.generalSettings) {
+      return { ...generalSettings, ...trans.generalSettings };
+    }
+    return generalSettings;
+  };
+
   return (
     <AppContext.Provider value={{ 
       lang, setLang, changeLanguage, isTranslatingUI, page, setPage: setPageRouter, t, updateTranslation,
@@ -787,7 +859,8 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       appointments, addAppointment, addAdminAppointment, updateAppointmentStatus, notifications, addNotification, getAvailableSlots,
       waitlist, addToWaitlist, removeFromWaitlist, notifyWaitlist, resendConfirmation,
       stylistsDB, addStylist, deleteStylist, generalSettings, updateGeneralSettings,
-      alerts, markAlertRead, clearAlerts
+      alerts, markAlertRead, clearAlerts,
+      getTranslatedServices, getTranslatedStylists, getTranslatedGeneralSettings
     }}>
       {children}
     </AppContext.Provider>
