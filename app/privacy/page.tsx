@@ -221,8 +221,7 @@ export default function PrivacyPolicy() {
           <p>Obere Str. 30, 97421 Schweinfurt</p>
           <p>E-Mail: datenschutz@dhurdur.de</p>
           <p>Telefon: 01523 2163823</p>
-          <p className="mt-2"><strong>Datenschutzbeauftragter:</strong> Nicht verpflichtend bestellt (< 20 Personen). Ansprechpartner: Inhaber.</p>
-        </Section>
+<p className="mt-2"><strong>Datenschutzbeauftragter:</strong> Nicht verpflichtend bestellt (&lt; 20 Personen). Ansprechpartner: Inhaber.</p>        </Section>
 
         <Section title="13. Änderungen">
           <p>
